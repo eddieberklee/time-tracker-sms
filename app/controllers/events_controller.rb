@@ -8,6 +8,7 @@ class EventsController < ApplicationController
       r.Message "Hey Monkey. Thanks for the message!"
         end
     @t = twiml.text.html_safe
+    render :text => @t
   end
 
   def send_message
