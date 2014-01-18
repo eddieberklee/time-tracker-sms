@@ -7,7 +7,7 @@ class EventsController < ApplicationController
     twiml = Twilio::TwiML::Response.new do |r|
       r.Message "Hey Monkey. Thanks for the message!"
         end
-    @t = twiml.text
+    @t = twiml.text.html_safe
   end
 
   def send_message
