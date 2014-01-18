@@ -1,4 +1,9 @@
 TimeTracker::Application.routes.draw do
+  root 'events#index'
+
+  get "events/index"
+  get "events/create"
+  get "events/add_end_time"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
