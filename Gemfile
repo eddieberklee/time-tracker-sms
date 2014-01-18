@@ -38,11 +38,15 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :production do
+  # Use unicorn as the app server
+  # https://devcenter.heroku.com/articles/getting-started-with-rails4
+  # gem 'unicorn'
+  gem 'rails_12factor'
+end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
-
-# Use unicorn as the app server
-# gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
@@ -50,5 +54,4 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'rails_12factor', group: :production
 ruby "2.1.0"

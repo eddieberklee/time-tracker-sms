@@ -3,6 +3,13 @@ class EventsController < ApplicationController
     "Hello"
   end
 
+  def respond_incoming
+    twiml = Twilio::TwiML::Response.new do |r|
+      r.Message "Hey Monkey. Thanks for the message!"
+        end
+    @t = twiml.text
+  end
+
   def send_message
     account_sid = "AC550124adbe074b4cfec3d8967b949844"
     auth_token = "e381b44bd42cb00339c62f9f19a4a040"
