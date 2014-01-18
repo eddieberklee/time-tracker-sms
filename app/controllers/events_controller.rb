@@ -4,8 +4,10 @@ class EventsController < ApplicationController
   end
 
   def respond_incoming
+    sender = params[:From]
+    puts params
     twiml = Twilio::TwiML::Response.new do |r|
-      r.Message "Hey Monkey. Thanks for the message!"
+      r.Message "Hey #{sender}. Thanks for the message!"
         end
     @t = twiml.text.html_safe
     render :text => @t
