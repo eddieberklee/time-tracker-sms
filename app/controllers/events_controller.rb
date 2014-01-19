@@ -43,7 +43,8 @@ class EventsController < ApplicationController
     last_event = Event.get_last_event
     if not last_event.nil?
       if last_event.end_time.nil? and last_event != e
-        last_event = e.created_at
+        last_event.end_time = e.created_at
+        last_event.save
       end
     end
 
