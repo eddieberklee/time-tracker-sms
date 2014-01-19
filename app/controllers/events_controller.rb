@@ -33,6 +33,25 @@ class EventsController < ApplicationController
   end
 
   def create
+    sender = params[:From]
+    body = params[:Body]
+    # puts params
+
+    e = Event.new(:title => body)
+    e.save
+
+    last_event = Event.get_last_event
+    if not last_event.nil?
+      if last_event.end_time.nil? and last_event != e
+        last_event = e.created_at
+      end
+    end
+
+    twiml = Twilio::TwiML::Response.new do |r|
+      r.Message "Hey #{sender}. Thanks for the message: #{body}!"
+        end
+    @t = twiml.text.html_safe
+    render :text => @t
   end
 
   def add_end_time
