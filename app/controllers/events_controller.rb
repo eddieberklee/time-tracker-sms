@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   def index
+    @today = "#{Time.now.to_date.strftime('%b')} #{Time.now.to_date.day}"
     @selected_date = Time.now.to_date
     @events = Event.where(:created_at => @selected_date.beginning_of_day..@selected_date.end_of_day)
     @events = @events.order(:start_time)
@@ -50,8 +51,10 @@ class EventsController < ApplicationController
       end
     end
 
+    last_event_duration = last_event.end_time - last_event.start_time
+
     twiml = Twilio::TwiML::Response.new do |r|
-      r.Message "Hey #{sender}. Thanks for the message: #{body}!"
+      r.Message "- - - You just finished '#{last_event.title}' (duration: #{last_event_duration})"
         end
     @t = twiml.text.html_safe
     render :text => @t

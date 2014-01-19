@@ -1,6 +1,7 @@
 TimeTracker::Application.routes.draw do
   root 'events#index'
 
+  get "events" => "events#index"
   get "events/index"
   get "events/respond_incoming"
   get "events/send_message"

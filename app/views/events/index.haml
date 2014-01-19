@@ -1,10 +1,23 @@
 
-%h1
-  Index
+%h1{:style=>"padding-left:20px;background-color:#000;color:#fff;font-size:4.5em;line-height:0.7em;"}
+  = @today
+
+%div{:style=>"height:20px;"}
 
 - @events.each do |e|
-  = e.title
-  = e.start_time.strftime('%H:%M:%S')
+  .event-box
+    %h2
+      = e.title
+    %p
+      - if e.start_time
+        = e.start_time.strftime('%H:%M')
+      &mdash;
+      - if e.end_time
+        = e.end_time.strftime('%H:%M')
+      - if e.start_time and e.end_time
+        (#{((e.end_time - e.start_time)/60).round(0)} min)
+%div{:style=>"clear:both;"}
+
 
 
 
