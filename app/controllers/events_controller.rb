@@ -33,7 +33,6 @@ class EventsController < ApplicationController
   end
 
   def create
-    last_event = Event.get_last_event
     sender = params[:From]
     body = params[:Body]
     # puts params
