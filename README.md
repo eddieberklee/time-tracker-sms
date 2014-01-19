@@ -2,6 +2,10 @@
 time-tracker-sms
 ================
 
+IMPORTANT
+=========
+I need to figure out a better way but for now, `rake assets:precompile` has to be run before pushing to Heroku or Heroku won't reflect any changes to static assets.
+
 It's quick and easy to send a text of what you're about to do.
 
 It's just as if you're telling a friend you're off to do something:
