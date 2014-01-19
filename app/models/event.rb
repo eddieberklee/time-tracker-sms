@@ -9,6 +9,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.get_last_event
+    @selected_date = Time.now.to_date
     events = Event.where(:created_at => @selected_date.beginning_of_day..@selected_date.end_of_day)
     if events.order(:created_at).size >= 2
       last_event = events.order(:created_at).reverse[1]
