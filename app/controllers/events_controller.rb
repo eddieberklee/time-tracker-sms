@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
   def index
-    "Hello"
+    @selected_date = Time.now.to_date
+    @events = Event.where(:created_at => @selected_date.beginning_of_day..@selected_date.end_of_day)
+    @events = @events.order(:start_time)
   end
 
   def respond_incoming

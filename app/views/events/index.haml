@@ -2,6 +2,10 @@
 %h1
   Index
 
+- @events.each do |e|
+  = e.title
+  = e.start_time.strftime('%H:%M:%S')
+
 
 
 
