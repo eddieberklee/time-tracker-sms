@@ -7,6 +7,10 @@
 %div{:style=>"height:20px;"}
 
 - @events.each do |e|
+  %div.event-row{:style=>"height:;"}
+    = e.title
+
+- @events.each do |e|
   .event-box
     %h2
       = e.title
