@@ -1,0 +1,37 @@
+
+= stylesheet_link_tag "event-box"
+= stylesheet_link_tag "event-row"
+
+%h1{:style=>"padding-left:20px;background-color:#000;color:#fff;font-size:4.5em;line-height:0.7em;"}
+  = @today
+
+%div{:style=>"height:0px;"}
+
+- @events.each do |e|
+  - midhours = ((e.end_time - e.start_time)/60/60*2).round(0)
+  = midhours
+  - height = midhours * 30
+  = height
+  .event-box{:style=>"height:#{height}px;"}
+    %h2
+      = e.title
+    %p
+      - if e.start_time
+        = e.start_time.strftime('%H:%M')
+      &mdash;
+      - if e.end_time
+        = e.end_time.strftime('%H:%M')
+      - if e.start_time and e.end_time
+        (#{((e.end_time - e.start_time)/60).round(0)} min)
+%div{:style=>"clear:both;"}
+
+
+
+
+
+
+
+
+
+
+
