@@ -13,7 +13,7 @@ class EventsController < ApplicationController
     @dates.each do |d|
       @selected_date = d
       events = Event.where(:created_at => @selected_date.beginning_of_day..@selected_date.end_of_day)
-      events = events.order(:start_time)
+      events = events.order(:start_time).reverse
       @events[d] = events
     end
     # puts "EVENTTTTTTTTTTTTTTTTT"

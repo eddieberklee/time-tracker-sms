@@ -17,7 +17,8 @@
       %div.time-container
         .time-tri-container
           .time-triangle
-        = @events[d].first.start_time.strftime('%H:%M%P')
+        = @events[d].first.start_time.strftime('%l:%M%P')
+      %div{:style=>"clear:both;"}
       - @events[d].each do |e|
         - if not e.start_time.nil? and not e.end_time.nil?
           - midhours = ((e.end_time - e.start_time)/60/60*2).round(0)
@@ -36,7 +37,8 @@
           %div.time-container
             .time-tri-container
               .time-triangle
-            = e.end_time.strftime('%H:%M%P')
+            = e.end_time.strftime('%l:%M%P')
+          %div{:style=>"clear:both;"}
   %div{:style=>"clear:both;"}
 
 

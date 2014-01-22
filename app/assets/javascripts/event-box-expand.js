@@ -14,7 +14,6 @@ $(function() {
     $this = $(this);
     if ($this.attr('data-height')) {
       height = $this.attr('data-height');
-      console.log(height);
       $this.css('height',height);
       $this.removeAttr('data-height');
     }
