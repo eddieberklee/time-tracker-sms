@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
 
   def set_start_time
     if self.start_time.nil?
-      self.start_time = Time.now
+      self.start_time = Time.now.to_datetime
       self.save
     end
   end

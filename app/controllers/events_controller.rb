@@ -1,9 +1,24 @@
 class EventsController < ApplicationController
   def index
+    @all_events = Event.all.order('created_at')
+    @dates = (@all_events.first.created_at.to_date..@all_events.last.created_at.to_date)
+    @dates = @dates.to_a
+    unless @dates.include?(Time.now.to_date)
+      @dates = @dates.push(Time.now.to_date)
+    end
     @today = "#{Time.now.to_date.strftime('%b')} #{Time.now.to_date.day}"
     @selected_date = Time.now.to_date
-    @events = Event.where(:created_at => @selected_date.beginning_of_day..@selected_date.end_of_day)
-    @events = @events.order(:start_time)
+    @events = {}
+    @dates = @dates.reverse()
+    @dates.each do |d|
+      @selected_date = d
+      events = Event.where(:created_at => @selected_date.beginning_of_day..@selected_date.end_of_day)
+      events = events.order(:start_time)
+      @events[d] = events
+    end
+    puts "EVENTTTTTTTTTTTTTTTTT"
+    puts @selected_date.beginning_of_day..@selected_date.end_of_day
+    puts @events
   end
 
   def respond_incoming
