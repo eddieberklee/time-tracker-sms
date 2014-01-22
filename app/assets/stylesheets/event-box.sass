@@ -20,12 +20,13 @@ $left-border: 90px
   width: 300px
   background-color: lighten($secondary-color,15%)
   padding: 3px
-  margin-top:  24px
+  margin-top:  12px
   margin-left: 6px
   // border: 2px solid lighten(#16a085,10%)
-  min-height: 28px
+  min-height: 33px
   position: relative
-  // overflow: hidden
+  overflow: hidden
+  -webkit-transition: all 0.3s
 
   .duration-container
     color: white
@@ -59,21 +60,19 @@ $left-border: 90px
   float: left
   position: relative
   font-size: 0.8em
-  color: white
-  text-shadow: 0px 1px 0px lighten($main-color,5%)
+  color: lighten($main-color,15%)
   $bgc:  lighten($main-color,16%)
-  box-shadow: 0px 1px 0px lighten($main-color,14%)
-  background-color: $bgc
+  border-top: 1px solid $bgc
   padding: 2px 4px
   top: 10px
   left: -60px
 
   .time-tri-container
     position: absolute
-    top: 0
-    right: -8px
-    width:  8px
-    height: 8px
+    top: -1px
+    right: -6px
+    width:  6px
+    height: 6px
     overflow: hidden
   .time-triangle
     position: absolute
