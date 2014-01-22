@@ -12,34 +12,35 @@
   
   %div{:style=>"height:30px;"}
   
-  .events-container
-    - if @events[d].size > 0
-      %div.time-container
-        .time-tri-container
-          .time-triangle
-        = @events[d].first.start_time.strftime('%l:%M%P')
-      %div{:style=>"clear:both;"}
-      - @events[d].each do |e|
-        .event-row
-          - if not e.start_time.nil? and not e.end_time.nil?
-            - midhours = ((e.end_time - e.start_time)/60/60*2).round(0)
-            - height = midhours * 20
-            .event-box{:style=>"height:#{height}px;"}
-              %h2
-                = e.title
-                // - if e.start_time
-                //   = e.start_time.strftime('%H:%M')
-                // &mdash;
-                // - if e.end_time
-                //   = e.end_time.strftime('%H:%M')
-              - if e.start_time and e.end_time
-                .duration-container
-                  #{((e.end_time - e.start_time)/60).round(0)} min
-            %div.time-container
-              .time-tri-container
-                .time-triangle
-              = e.end_time.strftime('%l:%M%P')
+  .events-container{:style=>"margin-left: 90px;"}
+    - i = 0
+    - @events[d].each do |e|
+      .event-row
+        - if i == @events[d].size - 1
+          - if @events[d].size > 0
+            %div.time-container{:style=>"outline:1px solid white;top:auto;bottom:-21px;"}
+              = @events[d].last.start_time.strftime('%l:%M%P')
             %div{:style=>"clear:both;"}
+        - i += 1
+        - if not e.start_time.nil? and not e.end_time.nil?
+          - midhours = ((e.end_time - e.start_time)/60/60*2).round(0)
+          - height = midhours * 20
+          .event-box{:style=>"height:#{height}px;"}
+            %h2
+              = e.title
+              // - if e.start_time
+              //   = e.start_time.strftime('%H:%M')
+              // &mdash;
+              // - if e.end_time
+              //   = e.end_time.strftime('%H:%M')
+            - if e.start_time and e.end_time
+              .duration-container
+                #{((e.end_time - e.start_time)/60).round(0)} min
+          %div.time-container
+            .time-tri-container
+              .time-triangle
+            = e.end_time.strftime('%l:%M%P')
+          %div{:style=>"clear:both;"}
   %div{:style=>"clear:both;"}
 
 
