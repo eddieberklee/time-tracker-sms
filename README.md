@@ -6,6 +6,10 @@ IMPORTANT
 =========
 I need to figure out a better way but for now, `rake assets:precompile` has to be run before pushing to Heroku or Heroku won't reflect any changes to static assets.
 
+TO PUSH TO HEROKU
+=================
+  1. rake assets:precompile; git add .; git ci -am "commit message"; git push; git push heroku master
+
 It's quick and easy to send a text of what you're about to do.
 
 It's just as if you're telling a friend you're off to do something:

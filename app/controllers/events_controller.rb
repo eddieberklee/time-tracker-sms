@@ -16,9 +16,9 @@ class EventsController < ApplicationController
       events = events.order(:start_time)
       @events[d] = events
     end
-    puts "EVENTTTTTTTTTTTTTTTTT"
-    puts @selected_date.beginning_of_day..@selected_date.end_of_day
-    puts @events
+    # puts "EVENTTTTTTTTTTTTTTTTT"
+    # puts @selected_date.beginning_of_day..@selected_date.end_of_day
+    # puts @events
   end
 
   def respond_incoming
