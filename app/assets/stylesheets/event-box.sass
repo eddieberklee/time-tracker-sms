@@ -1,27 +1,46 @@
+$peter-river: #3498db
+$emerald: #2ecc71
+$turquoise: #1abc9c
+$green-sea: #16a085
+$belize-hole: #2980b9
+$amethyst: #9b59b6
+$westeria: #8e44ad
+
+$main-color: $amethyst
+$secondary-color: $westeria
 
 $left-border: 90px
 .day-title
   background-color: #000
-  padding-left: $left-border
+  padding-left: $left-border - 15px
 .events-container
   margin-left: $left-border
 
 .event-box
   width: 300px
-  background-color: #1abc9c
+  background-color: lighten($secondary-color,15%)
   padding: 3px
-  margin-top:  6px
+  margin-top:  24px
   margin-left: 6px
-  border: 2px solid lighten(#16a085,10%)
+  // border: 2px solid lighten(#16a085,10%)
   min-height: 35px
   position: relative
 
+  .duration-container
+    color: white
+    font-size: 0.8em
+    text-shadow: 1px 2px 0px lighten($main-color,2%)
+    position: absolute
+    right: 5px
+    top: 5px
+
   h2
+    width: 210px
     font-size: 1.2em
     padding: 0
     color: white
     margin-top: 0
-    text-shadow: 2px 2px 0px darken(#16a085,3%)
+    text-shadow: 2px 2px 0px lighten($main-color,2%)
     clear: both
     position: absolute
     top: 5px
@@ -29,17 +48,41 @@ $left-border: 90px
   p
     border-radius: 5px
     font-size: 1.3em
-    color: darken(#16a085,10%)
-    text-shadow: 0px 1px 0px lighten(#16a085,25%)
+    color: darken($main-color,10%)
+    text-shadow: 0px 1px 0px lighten($main-color,25%)
 
+.time-container:first-of-type
+  top: -12px
 .time-container
   font-family: 'Duru Sans', sans-serif
   float: left
   position: relative
   font-size: 0.8em
-  color: lighten(#16a085,5%)
-  top: -5px
-  left: -46px
+  color: white
+  text-shadow: 0px 1px 0px lighten($main-color,5%)
+  $bgc:  lighten($main-color,16%)
+  box-shadow: 0px 1px 0px lighten($main-color,14%)
+  background-color: $bgc
+  padding: 2px 4px
+  top: 10px
+  left: -60px
+
+  .time-tri-container
+    position: absolute
+    top: 0
+    right: -8px
+    width:  8px
+    height: 8px
+    overflow: hidden
+  .time-triangle
+    position: absolute
+    top: -145%
+    left: -100%
+    width:  200%
+    height: 200%
+    -webkit-transform: rotate(-45deg)
+    background-color: darken($bgc,4%)
+
 
 
 

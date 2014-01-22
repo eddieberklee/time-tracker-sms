@@ -7,13 +7,15 @@
 - @dates.each do |d|
   %div.day-title
     %h1{:style=>"padding-left:20px;background-color:#000;color:#fff;font-size:4.5em;line-height:0.7em;"}
-      = d
+      = d.strftime('%b %e')
   
   %div{:style=>"height:30px;"}
   
   .events-container
     - if @events[d].size > 0
       %div.time-container
+        .time-tri-container
+          .time-triangle
         = @events[d].first.start_time.strftime('%H:%M%P')
       - @events[d].each do |e|
         - if not e.start_time.nil? and not e.end_time.nil?
@@ -27,9 +29,12 @@
               // &mdash;
               // - if e.end_time
               //   = e.end_time.strftime('%H:%M')
-              - if e.start_time and e.end_time
-                (#{((e.end_time - e.start_time)/60).round(0)} min)
+            - if e.start_time and e.end_time
+              .duration-container
+                #{((e.end_time - e.start_time)/60).round(0)} min
           %div.time-container
+            .time-tri-container
+              .time-triangle
             = e.end_time.strftime('%H:%M%P')
   %div{:style=>"clear:both;"}
 
