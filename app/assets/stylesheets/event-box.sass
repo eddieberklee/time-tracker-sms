@@ -20,11 +20,12 @@ $left-border: 90px
   width: 300px
   background-color: lighten($secondary-color,15%)
   padding: 3px
-  margin-top:  0px
+  margin-top:  5px
   margin-left: 6px
+  position: relative
+  float: left
   // border: 2px solid lighten(#16a085,10%)
   min-height: 33px
-  position: relative
   overflow: hidden
   -webkit-transition: all 0.3s
 
@@ -56,21 +57,26 @@ $left-border: 90px
   &:hover
     cursor: pointer
   &:hover + .time-container
-    color: darken($main-color,15%)
+    color: darken($main-color,25%)
+
+.event-row
+  position: relative
 
 .time-container:first-of-type
   top: 20px
 .time-container
   font-family: 'Duru Sans', sans-serif
   float: left
-  position: relative
+  position: absolute
   font-size: 0.8em
-  color: lighten($main-color,15%)
+  color: lighten($main-color,8%)
   $bgc:  lighten($main-color,16%)
   border-top: 1px solid $bgc
   padding: 2px 4px
-  top: 10px
-  left: -60px
+  width: 55px
+  text-align: right
+  top: 2px
+  left: -54px
 
   .time-tri-container
     position: absolute
