@@ -4,6 +4,8 @@
 = stylesheet_link_tag "event-row"
 %link{:href=>'http://fonts.googleapis.com/css?family=Duru+Sans|Nunito|Actor|Inconsolata', :rel=>'stylesheet', :type=>'text/css'}
 
+= javascript_include_tag "event-box-expand"
+
 - @dates.each do |d|
   %div.day-title
     %h1{:style=>"padding-left:20px;background-color:#000;color:#fff;font-size:4.5em;line-height:0.7em;"}

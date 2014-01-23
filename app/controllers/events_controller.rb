@@ -59,6 +59,9 @@ class EventsController < ApplicationController
     e.save
 
     last_event = Event.get_last_event
+    puts 'LLLLLLLLLLLLLLLLLLLLLL'
+    puts last_event
+    puts last_event.nil?
     if not last_event.nil?
 
       if last_event.end_time.nil? and last_event != e
