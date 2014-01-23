@@ -26,6 +26,8 @@
         - if not e.start_time.nil? and not e.end_time.nil?
           - midhours = ((e.end_time - e.start_time)/60/60*2).round(0)
           - height = midhours * 40
+          - if height > 280
+            - height = 280
           .event-box{:style=>"height:#{height}px;"}
             %h2
               = e.title
@@ -36,7 +38,12 @@
               //   = e.end_time.strftime('%H:%M')
             - if e.start_time and e.end_time
               .duration-container
-                #{((e.end_time - e.start_time)/60).round(0)} min
+                - diff_min = ((e.end_time - e.start_time)/60).round(0)
+                - if diff_min > 60
+                  - diff_hours = (diff_min/60.0).round(1)
+                  = "#{diff_hours} hr"
+                - else
+                  = "#{diff_min} min"
           %div.time-container
             = e.end_time.strftime('%l:%M')
           %div{:style=>"clear:both;"}

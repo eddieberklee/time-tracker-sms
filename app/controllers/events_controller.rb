@@ -50,10 +50,32 @@ class EventsController < ApplicationController
     @message = "Sent a message to Eddie!"
   end
 
+  def sendm(msg)
+    account_sid = "AC550124adbe074b4cfec3d8967b949844"
+    auth_token = "e381b44bd42cb00339c62f9f19a4a040"
+    client = Twilio::REST::Client.new account_sid, auth_token
+    from = "+15103435046"
+    to = "+12486223852"
+    body = "- - - " + msg
+    client.account.messages.create(
+      :from => from,
+      :to => to,
+      :body => body,
+    )
+  end
+
   def create
     sender = params[:From]
     body = params[:Body]
     # puts params
+     
+    # Artificial Intelligence
+    temp_body = body
+    # SMS
+    # if (temp_body.indexOf('#gym') >= 0 || temp_body.indexOf('#gymtime'))
+    #   @me = People.first
+    # end
+    # Artificial Intelligence End
 
     puts 'Body' + body
     e = Event.new(:title => body)
@@ -63,6 +85,7 @@ class EventsController < ApplicationController
     puts 'LLLLLLLLLLLLLLLLLLLLLL'
     puts last_event
     puts last_event.nil?
+
     if not last_event.nil?
 
       if last_event.end_time.nil? and last_event != e
