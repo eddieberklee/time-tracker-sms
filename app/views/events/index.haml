@@ -20,7 +20,7 @@
         - if i == @events[d].size - 1
           - if @events[d].size > 0
             %div.time-container{:style=>"outline:1px solid white;top:auto;bottom:-21px;"}
-              = @events[d].last.start_time.strftime('%l:%M%P')
+              = @events[d].last.start_time.strftime('%l:%M')
             %div{:style=>"clear:both;"}
         - i += 1
         - if not e.start_time.nil? and not e.end_time.nil?
@@ -38,9 +38,7 @@
               .duration-container
                 #{((e.end_time - e.start_time)/60).round(0)} min
           %div.time-container
-            .time-tri-container
-              .time-triangle
-            = e.end_time.strftime('%l:%M%P')
+            = e.end_time.strftime('%l:%M')
           %div{:style=>"clear:both;"}
   %div{:style=>"clear:both;"}
 

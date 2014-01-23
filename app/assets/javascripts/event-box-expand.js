@@ -21,9 +21,36 @@ $(function() {
   colors[19] = '#bdc3c7'
   colors[16] = '#95a5a6'
   colors[17] = '#7f8c8d' 
+
+  var calm = 0;
+  var fire = 0;
+  var counter = 8;
   $('.event-box').each(function() {
     $this = $(this);
-    index = Math.round(Math.random()*17);
+    if (calm == 1) {
+      counter -= 1;
+      index = Math.round(Math.random()*7);
+      if (counter == 0) {
+        counter = 8;
+        calm = 0
+      }
+    } else if (fire == 1) {
+      counter -= 1;
+      index = 16-Math.round(Math.random()*7);
+      if (counter == 0) {
+        counter = 8;
+        fire = 0
+      }
+    } else {
+      calm_or_fire = Math.random()
+      if (calm_or_fire < 0.5) {
+        calm = 1
+        index = Math.round(Math.random()*7);
+      } else {
+        fire = 1
+        index = 16-Math.round(Math.random()*7);
+      }
+    }
     $this.css('background-color',colors[index]);
     $this.find('h2').css('text-shadow','1px 2px 0px '+colors[index]);
     $this.find('.duration-container').css('text-shadow','1px 2px 0px '+colors[index]);
