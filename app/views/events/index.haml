@@ -41,9 +41,15 @@
                 - diff_min = ((e.end_time - e.start_time)/60).round(0)
                 - if diff_min > 60
                   - diff_hours = (diff_min/60.0).round(1)
-                  = "#{diff_hours} hr"
+                  %span
+                    = diff_hours
+                  %span
+                    hr
                 - else
-                  = "#{diff_min} min"
+                  %span
+                    = diff_min
+                  %span
+                    min
           %div.time-container
             = e.end_time.strftime('%l:%M')
           %div{:style=>"clear:both;"}

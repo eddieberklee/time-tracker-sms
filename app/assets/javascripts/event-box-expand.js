@@ -22,23 +22,26 @@ $(function() {
   colors[16] = '#95a5a6'
   colors[17] = '#7f8c8d' 
 
+  var change_this = 4
+  var counter = change_this;
   var calm = 0;
   var fire = 0;
-  var counter = 8;
+  var past_index = 0;
   $('.event-box').each(function() {
+    console.log(counter);
     $this = $(this);
-    if (calm == 1) {
+    if (calm == 1 && counter >= 0) {
       counter -= 1;
       index = Math.round(Math.random()*7);
       if (counter == 0) {
-        counter = 8;
+        counter = change_this;
         calm = 0
       }
-    } else if (fire == 1) {
+    } else if (fire == 1 && counter >= 0) {
       counter -= 1;
       index = 16-Math.round(Math.random()*7);
       if (counter == 0) {
-        counter = 8;
+        counter = change_this;
         fire = 0
       }
     } else {
@@ -51,6 +54,18 @@ $(function() {
         index = 16-Math.round(Math.random()*7);
       }
     }
+
+    if (past_index == index) { // I don't want consecutive duplicates
+      while (past_index == index) {
+        if (calm_or_fire < 0.5) {
+          index = Math.round(Math.random()*7);
+        } else {
+          index = 16-Math.round(Math.random()*7);
+        }
+      }
+    }
+    past_index = index;
+
     $this.css('background-color',colors[index]);
     $this.find('h2').css('text-shadow','1px 2px 0px '+colors[index]);
     $this.find('.duration-container').css('text-shadow','1px 2px 0px '+colors[index]);
