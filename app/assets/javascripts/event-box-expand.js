@@ -67,7 +67,7 @@ $(function() {
     past_index = index;
 
     $this.css('background-color',colors[index]);
-    $this.find('h2').css('text-shadow','1px 2px 0px '+colors[index]);
+    // $this.find('h2').css('text-shadow','1px 2px 0px '+colors[index]);
     $this.find('.duration-container').css('text-shadow','1px 2px 0px '+colors[index]);
     $this.closest('.event-box').siblings('.time-container').css('color',colors[index]);
     $this.closest('.event-box').siblings('.time-container').css('border-top','1px solid '+colors[index]);

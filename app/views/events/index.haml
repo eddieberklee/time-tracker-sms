@@ -34,11 +34,6 @@
           .event-box{:style=>"height:#{height}px;"}
             %h2
               = e.title
-              // - if e.start_time
-              //   = e.start_time.strftime('%H:%M')
-              // &mdash;
-              // - if e.end_time
-              //   = e.end_time.strftime('%H:%M')
             - if e.start_time and e.end_time
               .duration-container
                 - diff_min = ((e.end_time - e.start_time)/60).round(0)
