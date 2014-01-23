@@ -17,13 +17,13 @@ $(function() {
   colors[13] = '#d35400'
   colors[14] = '#e74c3c'
   colors[15] = '#c0392b'
-  colors[16] = '#ecf0f1'
-  colors[17] = '#bdc3c7'
-  colors[18] = '#95a5a6'
-  colors[19] = '#7f8c8d' 
+  colors[18] = '#ecf0f1'
+  colors[19] = '#bdc3c7'
+  colors[16] = '#95a5a6'
+  colors[17] = '#7f8c8d' 
   $('.event-box').each(function() {
     $this = $(this);
-    index = Math.round(Math.random()*19);
+    index = Math.round(Math.random()*17);
     $this.css('background-color',colors[index]);
     $this.find('h2').css('text-shadow','1px 2px 0px '+colors[index]);
     $this.find('.duration-container').css('text-shadow','1px 2px 0px '+colors[index]);
