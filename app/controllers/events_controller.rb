@@ -69,6 +69,9 @@ class EventsController < ApplicationController
       last_event_duration = ((last_event.end_time - last_event.start_time)/60).round(0)
     end
 
+    puts 'LASTTTTTTTTTTTT'
+    puts last_event
+
 
     twiml = Twilio::TwiML::Response.new do |r|
       r.Message "- - - Finished '#{last_event.title}' (#{last_event_duration} min)"
