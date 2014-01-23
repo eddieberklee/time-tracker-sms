@@ -1,8 +1,11 @@
 %meta{:name=>"viewport", :content=>"width=device-width, initial-scale=1.0"}  
+%meta{:name=>"apple-mobile-web-app-capable", :content=>"yes"}
+%meta{:name=>"apple-mobile-web-app-status-bar-style", :content=>"black-translucent"}
 
 = stylesheet_link_tag "event-box"
 = stylesheet_link_tag "event-row"
-%link{:href=>'http://fonts.googleapis.com/css?family=Duru+Sans|Nunito|Actor|Inconsolata', :rel=>'stylesheet', :type=>'text/css'}
+%link{:href=>'http://fonts.googleapis.com/css?family=Duru+Sans', :rel=>'stylesheet', :type=>'text/css'}
+
 
 = javascript_include_tag "event-box-expand"
 
@@ -41,12 +44,12 @@
                 - diff_min = ((e.end_time - e.start_time)/60).round(0)
                 - if diff_min > 60
                   - diff_hours = (diff_min/60.0).round(1)
-                  %span
+                  %b
                     = diff_hours
                   %span
                     hr
                 - else
-                  %span
+                  %b
                     = diff_min
                   %span
                     min
