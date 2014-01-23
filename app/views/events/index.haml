@@ -19,7 +19,7 @@
       .event-row
         - if i == @events[d].size - 1
           - if @events[d].size > 0
-            %div.time-container{:style=>"outline:1px solid white;top:auto;bottom:-21px;"}
+            %div.time-container{:style=>";top:auto;bottom:-31px;"}
               = @events[d].last.start_time.strftime('%l:%M')
             %div{:style=>"clear:both;"}
         - i += 1
