@@ -7,12 +7,12 @@ class EventsController < ApplicationController
       @dates = @dates.push(Time.now.to_date)
     end
     @today = "#{Time.now.to_date.strftime('%b')} #{Time.now.to_date.day}"
-    @selected_date = Time.now.to_date
     @events = {}
     @dates = @dates.reverse()
     @dates.each do |d|
       @selected_date = d
       events = Event.where(:created_at => @selected_date.beginning_of_day..@selected_date.end_of_day)
+      puts events
       events = events.order(:start_time).reverse
       @events[d] = events
     end
@@ -55,6 +55,7 @@ class EventsController < ApplicationController
     body = params[:Body]
     # puts params
 
+    puts 'Body' + body
     e = Event.new(:title => body)
     e.save
 
