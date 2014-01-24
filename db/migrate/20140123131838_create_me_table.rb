@@ -3,6 +3,7 @@ class CreateMeTable < ActiveRecord::Migration
     create_table :me_tables do |t|
       t.string :name
       t.text :personality
+      t.text :reminders
     end
   end
 end

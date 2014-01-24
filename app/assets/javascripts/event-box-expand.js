@@ -28,7 +28,6 @@ $(function() {
   var fire = 0;
   var past_index = 0;
   $('.event-box').each(function() {
-    console.log(counter);
     $this = $(this);
     if (calm == 1 && counter >= 0) {
       counter -= 1;

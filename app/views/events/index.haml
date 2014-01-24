@@ -49,7 +49,12 @@
                   %span
                     min
           %div.time-container
-            = e.end_time.strftime('%l:%M')
+            - if (i - @events.size + 1) % 5 == 0
+              = e.end_time.strftime('%l:%M')
+              %span{:style=>"font-size:0.7em;position:relative;top:-7px;"}
+                = e.end_time.strftime('%P')
+            - else
+              = e.end_time.strftime('%l:%M')
           %div{:style=>"clear:both;"}
   %div{:style=>"clear:both;"}
 
