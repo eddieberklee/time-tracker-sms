@@ -21,9 +21,10 @@ ActiveRecord::Schema.define(version: 20140123131838) do
     t.datetime "updated_at"
   end
 
-  create_table "me_tables", force: true do |t|
+  create_table "people", force: true do |t|
     t.string "name"
     t.text   "personality"
+    t.text   "reminders"
   end
 
 end

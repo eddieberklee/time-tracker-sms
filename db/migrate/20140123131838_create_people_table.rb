@@ -1,6 +1,6 @@
-class CreateMeTable < ActiveRecord::Migration
+class CreatePeopleTable < ActiveRecord::Migration
   def change
-    create_table :me_tables do |t|
+    create_table :people do |t|
       t.string :name
       t.text :personality
       t.text :reminders

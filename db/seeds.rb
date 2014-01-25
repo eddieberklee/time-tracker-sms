@@ -51,6 +51,7 @@ titles.each do |t|
   i += 1
 end
 
+p = Person.create(:name=>"Eddie")
 
 
 
