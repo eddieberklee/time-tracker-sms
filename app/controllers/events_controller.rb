@@ -72,7 +72,7 @@ class EventsController < ApplicationController
     # Artificial Intelligence
     temp_body = body
     # SMS
-    if temp_body.index('#reminder') >= 0
+    if temp_body.index('#reminder')
       eddie = Person.find(1)
       eddie.reminders.append(body)
       eddie.save
