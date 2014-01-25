@@ -9,7 +9,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.get_last_event
-    events = Event.where(:created_at => Time.now-60*60*12..Time.now+60*60*12)
+    events = Event.where(:created_at => Time.now-60*60*24..Time.now+60*60*24)
     puts Time.now
     puts Time.now-60*60*12
     puts Time.now+60*60*12
