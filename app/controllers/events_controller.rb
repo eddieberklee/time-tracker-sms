@@ -3,7 +3,7 @@ class EventsController < ApplicationController
     @all_events = Event.all.order('created_at')
     @dates = []
     @events = {}
-    if @all_events.first
+    if not @all_events.first.nil?
       @dates = (@all_events.first.created_at.to_date..@all_events.last.created_at.to_date)
       @dates = @dates.to_a
       unless @dates.include?(Time.now.to_date)
