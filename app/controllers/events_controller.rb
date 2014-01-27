@@ -19,6 +19,7 @@ class EventsController < ApplicationController
           puts events
           events = events.order(:start_time).reverse
           @events[d] = events
+        end
       end
     end
   end
