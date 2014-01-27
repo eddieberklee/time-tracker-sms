@@ -66,7 +66,7 @@ $(function() {
     past_index = index;
 
     if ($this.hasClass("in-progress-event")) {
-      $this.css('border','2px dashed '+colors[index]);
+      $this.css('border','1px dashed '+colors[index]);
       $this.css('background-color','white');
       $this.find('h2').css('color',colors[index]);
       $this.find('h2').css('text-shadow','none');
