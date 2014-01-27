@@ -58,7 +58,7 @@
             - if not e.end_time.nil?
               - if (i - @events.size + 1) % 5 == 0
                 = e.end_time.strftime('%l:%M')
-                %span{:style=>"font-size:0.7em;position:relative;top:-7px;"}
+                %span{:style=>"font-size:0.7em;position:relative;top:-8px;"}
                   = e.end_time.strftime('%P')
               - else
                 = e.end_time.strftime('%l:%M')

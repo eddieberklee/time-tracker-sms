@@ -79,6 +79,12 @@ class EventsController < ApplicationController
       eddie = Person.find(1)
       eddie.reminders.append(body)
       eddie.save
+      twiml = Twilio::TwiML::Response.new do |r|
+        r.Message "- - - Reminder saved!"
+          end
+      @t = twiml.text.html_safe
+      render :text => @t
+      return
     end
     # if (temp_body.indexOf('#gym') >= 0 || temp_body.indexOf('#gymtime'))
     #   @me = People.first
