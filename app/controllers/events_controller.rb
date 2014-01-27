@@ -3,21 +3,22 @@ class EventsController < ApplicationController
     @all_events = Event.all.order('created_at')
     @dates = []
     @events = {}
-    if not @all_events.nil? and not @all_events.first.nil?
-      @dates = (@all_events.first.created_at.to_date..@all_events.last.created_at.to_date)
-      @dates = @dates.to_a
-      unless @dates.include?(Time.now.to_date)
-        @dates = @dates.push(Time.now.to_date)
-      end
-      @today = "#{Time.now.to_date.strftime('%b')} #{Time.now.to_date.day}"
-      @events = {}
-      @dates = @dates.reverse()
-      @dates.each do |d|
-        @selected_date = d
-        events = Event.where(:created_at => @selected_date.beginning_of_day..@selected_date.end_of_day)
-        puts events
-        events = events.order(:start_time).reverse
-        @events[d] = events
+    if not @all_events.nil?
+      if not @all_events.first.nil?
+        @dates = (@all_events.first.created_at.to_date..@all_events.last.created_at.to_date)
+        @dates = @dates.to_a
+        unless @dates.include?(Time.now.to_date)
+          @dates = @dates.push(Time.now.to_date)
+        end
+        @today = "#{Time.now.to_date.strftime('%b')} #{Time.now.to_date.day}"
+        @events = {}
+        @dates = @dates.reverse()
+        @dates.each do |d|
+          @selected_date = d
+          events = Event.where(:created_at => @selected_date.beginning_of_day..@selected_date.end_of_day)
+          puts events
+          events = events.order(:start_time).reverse
+          @events[d] = events
       end
     end
   end
