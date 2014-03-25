@@ -67,11 +67,35 @@ class EventsController < ApplicationController
     )
   end
 
+  def special_command(body)
+    body.downcase!
+
+    if body == 'delete' or body == 'delete last' or body == 'del':
+      last_event = Event.get_last_event
+      last_event.destroy
+      return true
+    end
+
+    lastEvent = ['last', 'last activity', 'last tracked', 'what did i just do', \
+                 'what did i last do', 'last thing i did', 'last thing']
+    if lastEvent.index(body)
+      last_event = Event.get_last_event
+      last_event_message = "#{last_event.title} #{last_event.duration}"
+      sendm(last_event_message)
+      return true
+    end
+
+    return false
+  end
+
   def create
     sender = params[:From]
     body = params[:Body]
-    # puts params
-     
+
+    if special_command(body)
+      return # if one of the special commands caught on, we should skip the following code
+    end
+
     # Artificial Intelligence
     temp_body = body
     # SMS
@@ -86,33 +110,35 @@ class EventsController < ApplicationController
       render :text => @t
       return
     end
+
     # if (temp_body.indexOf('#gym') >= 0 || temp_body.indexOf('#gymtime'))
     #   @me = People.first
     # end
     # Artificial Intelligence End
 
-    puts 'Body' + body
-    e = Event.new(:title => body)
-    e.save
 
-    last_event = Event.get_last_event
+    # puts 'Body' + body
+    # e = Event.new(:title => body)
+    # e.save
 
-    if not last_event.nil?
+    # last_event = Event.get_last_event
 
-      if last_event.end_time.nil? and last_event != e
-        last_event.end_time = e.created_at
-        last_event.save
-      end
+    # if not last_event.nil?
 
-      last_event_duration = ((last_event.end_time - last_event.start_time)/60).round(0)
+    #   if last_event.end_time.nil? and last_event != e
+    #     last_event.end_time = e.created_at
+    #     last_event.save
+    #   end
 
-      twiml = Twilio::TwiML::Response.new do |r|
-        r.Message "- - - Finished '#{last_event.title}' (#{last_event_duration} min)"
-          end
-      @t = twiml.text.html_safe
-      render :text => @t
+    #   last_event_duration = ((last_event.end_time - last_event.start_time)/60).round(0)
 
-    end
+    #   twiml = Twilio::TwiML::Response.new do |r|
+    #     r.Message ". . . Finished '#{last_event.title}' (#{last_event_duration} min)"
+    #       end
+    #   @t = twiml.text.html_safe
+    #   render :text => @t
+    # end
+
   end
 
   def add_end_time

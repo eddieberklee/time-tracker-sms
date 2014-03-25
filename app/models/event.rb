@@ -8,6 +8,10 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def duration
+    duration = ((self.end_time - self.start_time)/60).round(0)
+  end
+
   def self.get_last_event
     events = Event.where(:created_at => Time.now-60*60*24..Time.now+60*60*24)
     puts Time.now

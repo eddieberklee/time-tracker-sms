@@ -1,3 +1,6 @@
+@import "vspace"
+@import "css3_mixins"
+
 $turquoise: #1abc9c
 $green-sea: #16a085
 $emerald: #2ecc71
@@ -31,7 +34,7 @@ $left-border: 90px
 
 .event-box
   width: 300px
-  background-color: lighten($secondary-color,15%)
+  // background-color: lighten($secondary-color,15%)
   padding: 3px
   margin-top:  5px
   margin-left: 6px
@@ -40,7 +43,7 @@ $left-border: 90px
   // border: 2px solid lighten(#16a085,10%)
   min-height: 33px
   overflow: hidden
-  -webkit-transition: all 0.3s
+  @include css3-transition(all,0.2s)
   line-height: 17px
 
   .duration-container
