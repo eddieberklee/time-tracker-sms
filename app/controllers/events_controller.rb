@@ -68,7 +68,7 @@ class EventsController < ApplicationController
   end
 
   def special_command(body)
-    body.downcase!
+    body = body.downcase
 
     if body == 'delete' or body == 'delete last' or body == 'del'
       last_event = Event.get_last_event
