@@ -39,7 +39,7 @@ class EventsController < ApplicationController
     account_sid = "ACa2881e70c9136176e5fed5efa17d161d"
     auth_token = "eef3c20c01b13d6bf1540e8ee721b6b6"
     client = Twilio::REST::Client.new account_sid, auth_token
-    from = "+15103435046"
+    from = "+12482304738"
     friends = {
       "+12486223852" => "Eddie Lee",
     }
@@ -57,7 +57,7 @@ class EventsController < ApplicationController
     account_sid = "ACa2881e70c9136176e5fed5efa17d161d"
     auth_token = "eef3c20c01b13d6bf1540e8ee721b6b6"
     client = Twilio::REST::Client.new account_sid, auth_token
-    from = "+15103435046"
+    from = "+12482304738"
     to = "+12486223852"
     body = "- - - " + msg
     client.account.messages.create(
