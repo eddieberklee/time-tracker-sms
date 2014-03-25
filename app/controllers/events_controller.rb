@@ -117,9 +117,9 @@ class EventsController < ApplicationController
     # Artificial Intelligence End
 
 
-    # puts 'Body' + body
-    # e = Event.new(:title => body)
-    # e.save
+    puts 'Body' + body
+    e = Event.new(:title => body)
+    e.save
 
     # last_event = Event.get_last_event
 
