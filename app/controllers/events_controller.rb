@@ -3,6 +3,7 @@ class EventsController < ApplicationController
     @all_events = Event.all.order('created_at')
     @dates = []
     @events = {}
+
     if not @all_events.nil?
       if not @all_events.first.nil?
         @dates = (@all_events.first.created_at.to_date..@all_events.last.created_at.to_date)
@@ -10,12 +11,12 @@ class EventsController < ApplicationController
         unless @dates.include?(Time.now.to_date)
           @dates = @dates.push(Time.now.to_date)
         end
-        @today = "#{Time.now.to_date.strftime('%b')} #{Time.now.to_date.day}"
-        @events = {}
         @dates = @dates.reverse()
+
+        @today = "#{Time.now.to_date.strftime('%b')} #{Time.now.to_date.day}"
+
         @dates.each do |d|
-          @selected_date = d
-          events = Event.where(:created_at => @selected_date.beginning_of_day..@selected_date.end_of_day)
+          events = Event.where(:created_at => d.beginning_of_day..d.end_of_day)
           puts events
           events = events.order(:start_time).reverse
           @events[d] = events
@@ -128,6 +129,8 @@ class EventsController < ApplicationController
         last_event.save
       end
     end
+
+    render :text => "" # CHECK IF THIS GETS RID OF TWILIO GIVING A WARNING
 
     # twiml = Twilio::TwiML::Response.new do |r|
     #   r.Message ". . . Finished '#{last_event.title}' (#{last_event_duration} min)"

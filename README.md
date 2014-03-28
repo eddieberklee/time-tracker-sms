@@ -2,13 +2,21 @@
 time-tracker-sms
 ================
 
+TODO
+====
+http://www.elabs.se/blog/57-handle-secret-credentials-in-ruby-on-rails
+
 IMPORTANT
 =========
 I need to figure out a better way but for now, `rake assets:precompile` has to be run before pushing to Heroku or Heroku won't reflect any changes to static assets.
+  - is this because of haml/sass
 
-TO PUSH TO HEROKU
+To Push to Heroku
 =================
   1. rake assets:precompile; git add .; git ci -am "commit message"; git push; git push heroku master
+
+Description
+===========
 
 It's quick and easy to send a text of what you're about to do.
 
