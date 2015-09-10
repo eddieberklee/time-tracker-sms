@@ -31,7 +31,7 @@ gem 'jbuilder', '~> 1.2'
 
 group :development do
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
+  gem 'sqlite3', '1.3.10'
 end
 
 group :doc do
@@ -55,4 +55,3 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-ruby "2.1.0"
