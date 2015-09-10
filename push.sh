@@ -1,5 +1,5 @@
 git status
 git ci -am 'automated pushing'
-git push origin master
-git remote add heroku git@heroku.com:time-tracker-sms.git
-git push heroku master
+git push origin jon
+git remote add heroku git@heroku.com:jon-study.git
+git push heroku jon
