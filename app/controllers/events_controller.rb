@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+
   def index
     @all_events = Event.all.order('created_at')
     @dates = []
@@ -37,12 +38,12 @@ class EventsController < ApplicationController
   end
 
   def send_message
-    account_sid = "ACa2881e70c9136176e5fed5efa17d161d"
-    auth_token = "eef3c20c01b13d6bf1540e8ee721b6b6"
+    account_sid = "ACfc1cf99870c11da7b3bb3f1528d522fb"
+    auth_token = "5bbd9b28019732fbfa115e7b504ae62d"
     client = Twilio::REST::Client.new account_sid, auth_token
-    from = "+12482304738"
+    from = "+15014909625"
     friends = {
-      "+12486223852" => "Eddie Lee",
+      "+18583537603" => "Jon Song",
     }
     friends.each do |phone, name|
       client.account.messages.create(
@@ -55,11 +56,11 @@ class EventsController < ApplicationController
   end
 
   def sendm(msg)
-    account_sid = "ACa2881e70c9136176e5fed5efa17d161d"
-    auth_token = "eef3c20c01b13d6bf1540e8ee721b6b6"
+    account_sid = "ACfc1cf99870c11da7b3bb3f1528d522fb"
+    auth_token = "5bbd9b28019732fbfa115e7b504ae62d"
     client = Twilio::REST::Client.new account_sid, auth_token
-    from = "+12482304738"
-    to = "+12486223852"
+    from = "+15014909625"
+    to = "+18583537603"
     body = "- - - " + msg
     client.account.messages.create(
       :from => from,
