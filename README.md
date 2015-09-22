@@ -19,6 +19,18 @@ Run Locally
 ===========
   1. rails server
 
+Setting Up Everything Necessary for a New Github Branch and Heroku and Twilio
+=============================================================================
+  1. I `git checkout -b eddie -t origin/master`
+  2. Create new Twilio account
+  3. Now replace the SID and Auth Token
+  4. Now try `git push heroku eddie:master` (if you're trying to push the `eddie` local branch - or just `git push heroku master` if you're working off the `master` branch)
+  5. Heroku doesn't work :(
+  6. Cause you need a database `heroku addons:create heroku-postgresql:hobby-dev`
+  7. `heroku run rake db:migrate`
+  8. `heroku restart`
+
+
 Description
 ===========
 
