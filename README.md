@@ -29,6 +29,7 @@ Setting Up Everything Necessary for a New Github Branch and Heroku and Twilio
   6. Cause you need a database `heroku addons:create heroku-postgresql:hobby-dev`
   7. `heroku run rake db:migrate`
   8. `heroku restart`
+  9. If you run `rake routes` you'll see that there's a CREATE path: `events/create/ GET` so in Twilio, under SMS Request URL: put in `https://eddie-study.herokuapp.com/events/create` under the HTTP GET method.
 
 
 Description
