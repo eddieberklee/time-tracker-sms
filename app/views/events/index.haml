@@ -6,70 +6,75 @@
 = stylesheet_link_tag "event-row"
 %link{:href=>'http://fonts.googleapis.com/css?family=Duru+Sans', :rel=>'stylesheet', :type=>'text/css'}
 
-- @dates.each do |d|
-  - if not @events[d].empty?
-    %div.day-title
-      %h1{:style=>"padding-left:20px;background-color:#000;color:#fff;font-size:4.5em;line-height:0.7em;"}
-        = d.strftime('%b %e')
-    
-    %div{:style=>"height:30px;"}
+.column{:style=>"width:50%;"}
+  - @dates.each do |d|
+    - if not @events[d].empty?
+      %div.day-title
+        %h1{:style=>"padding-left:20px;background-color:#000;color:#fff;font-size:4.5em;line-height:0.7em;"}
+          = d.strftime('%b %e')
+      
+      %div{:style=>"height:30px;"}
 
-    .events-container{:style=>"margin-left: 90px;"}
-      - i = 0
-      - @events[d].each do |e|
-        .event-row
-          - if i == @events[d].size - 1
-            - if @events[d].size > 0
-              %div.time-container{:style=>";top:auto;bottom:-25px;"}
-                = @events[d].last.start_time.strftime('%l:%M')
-              %div{:style=>"clear:both;"}
-          - i += 1
-          - if not e.start_time.nil?
-            - if e.end_time.nil?
-              - inprogress_or_not = 'in-progress-event'
-              - height = 0
-              - diff_min = ((Time.now - e.start_time)/60).round(0)
-            - else
-              - inprogress_or_not = ''
-              - midhours = ((e.end_time - e.start_time)/60/60*2).round(0)
-              - height = midhours * 20
-              - if height > 280
-                - height = 280
-              - diff_min = ((e.end_time - e.start_time)/60).round(0)
-
-            .event-box{:style=>"height:#{height}px;", :class=>"#{inprogress_or_not}"}
-              %h2
-                = e.title
-              .duration-container
-                - if diff_min > 60
-                  - diff_hours = (diff_min/60.0).round(1)
-                  %b
-                    = diff_hours
-                  %span
-                    hr
-                - else
-                  %b
-                    = diff_min
-                  %span
-                    min
-            %div.time-container
-              - if not e.end_time.nil?
-                - if (i - @events.size + 1) % 5 == 0
-                  = e.end_time.strftime('%l:%M')
-                  %span{:style=>"font-size:0.7em;position:relative;top:-8px;"}
-                    = e.end_time.strftime('%P')
-                - else
-                  = e.end_time.strftime('%l:%M')
+      .events-container{:style=>"margin-left: 90px;"}
+        - i = 0
+        - @events[d].each do |e|
+          .event-row
+            - if i == @events[d].size - 1
+              - if @events[d].size > 0
+                %div.time-container{:style=>";top:auto;bottom:-25px;"}
+                  = @events[d].last.start_time.strftime('%l:%M')
+                %div{:style=>"clear:both;"}
+            - i += 1
+            - if not e.start_time.nil?
+              - if e.end_time.nil?
+                - inprogress_or_not = 'in-progress-event'
+                - height = 0
+                - diff_min = ((Time.now - e.start_time)/60).round(0)
               - else
-                NOW
-            %div{:style=>"clear:both;"}
-    %div{:style=>"clear:both;"}
-    %div{:style=>"height:30px;"}
+                - inprogress_or_not = ''
+                - midhours = ((e.end_time - e.start_time)/60/60*2).round(0)
+                - height = midhours * 20
+                - if height > 280
+                  - height = 280
+                - diff_min = ((e.end_time - e.start_time)/60).round(0)
 
-= javascript_include_tag "event-box-expand"
-= javascript_include_tag "Chart.js/Chart"
-= javascript_include_tag "drawing-charts"
-
+              .event-box{:style=>"height:#{height}px;", :class=>"#{inprogress_or_not}"}
+                %h2
+                  = e.title
+                .duration-container
+                  - if diff_min > 60
+                    - diff_hours = (diff_min/60.0).round(1)
+                    %b
+                      = diff_hours
+                    %span
+                      hr
+                  - else
+                    %b
+                      = diff_min
+                    %span
+                      min
+              %div.time-container
+                - if not e.end_time.nil?
+                  - if (i - @events.size + 1) % 5 == 0
+                    = e.end_time.strftime('%l:%M')
+                    %span{:style=>"font-size:0.7em;position:relative;top:-8px;"}
+                      = e.end_time.strftime('%P')
+                  - else
+                    = e.end_time.strftime('%l:%M')
+                - else
+                  NOW
+              %div{:style=>"clear:both;"}
+      %div{:style=>"clear:both;"}
+      %div{:style=>"height:30px;"}
+  = javascript_include_tag "event-box-expand"
+  = javascript_include_tag "Chart.js/Chart"
+  = javascript_include_tag "drawing-charts"
+%iframe{:src=>"https://jon-study.herokuapp.com",
+        :style=>"width:50%;"}
+%script{:type=>"text/javascript"}
+  $(document).ready(function() {
+  document.domain = 'herokuapp.com'
+  });
 
 
 
