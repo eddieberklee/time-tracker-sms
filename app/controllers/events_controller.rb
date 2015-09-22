@@ -58,8 +58,8 @@ class EventsController < ApplicationController
     account_sid = "AC5eb6b5af49fe93e6948fcfaae2e1489d"
     auth_token = "79caddc95ca00f03317972acd999dc20"
     client = Twilio::REST::Client.new account_sid, auth_token
-    from = "+12486223852"
-    to = "+12483657429"
+    from = "+12483657429"
+    to = "+12486223852"
     body = "- - - " + msg
     client.account.messages.create(
       :from => from,
