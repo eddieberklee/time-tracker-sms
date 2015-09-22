@@ -37,8 +37,8 @@ class EventsController < ApplicationController
   end
 
   def send_message
-    account_sid = "ACa2881e70c9136176e5fed5efa17d161d"
-    auth_token = "eef3c20c01b13d6bf1540e8ee721b6b6"
+    account_sid = "AC5eb6b5af49fe93e6948fcfaae2e1489d"
+    auth_token = "79caddc95ca00f03317972acd999dc20"
     client = Twilio::REST::Client.new account_sid, auth_token
     from = "+12482304738"
     friends = {
@@ -55,8 +55,8 @@ class EventsController < ApplicationController
   end
 
   def sendm(msg)
-    account_sid = "ACa2881e70c9136176e5fed5efa17d161d"
-    auth_token = "eef3c20c01b13d6bf1540e8ee721b6b6"
+    account_sid = "AC5eb6b5af49fe93e6948fcfaae2e1489d"
+    auth_token = "79caddc95ca00f03317972acd999dc20"
     client = Twilio::REST::Client.new account_sid, auth_token
     from = "+12482304738"
     to = "+12486223852"
